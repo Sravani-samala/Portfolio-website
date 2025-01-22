@@ -1,13 +1,378 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Unbounded";
+  src: url('./assets/fonts/Unbounded-Regular.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "Unbounded";
+  src: url('./assets/fonts/Unbounded-Medium.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Unbounded";
+  src: url('./assets/fonts/Unbounded-SemiBold.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Unbounded";
+  src: url('./assets/fonts/Unbounded-Bold.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Unbounded";
+  src: url('./assets/fonts/Unbounded-ExtraBold.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url('./assets/fonts/Jost-Regular.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url('./assets/fonts/Jost-Medium.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url('./assets/fonts/Jost-SemiBold.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url('./assets/fonts/Jost-Bold.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 700;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #000;
+  --dark-primary: #023436;
+  --dark-secondary: #037971;
+}
+
+body {
+  padding: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+}
+
+.eclipse {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.eclipse::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-color: #f5f5f5;
+  filter: blur(200px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Header starts */
+.menu-link::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: var(--dark-secondary);
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: 0.3s all ease-in-out;
+}
+
+.menu-link:hover::before {
+  width: 100%;
+}
+
+/* Hero banner starts */
+.banner-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: var(--dark-secondary);
+  opacity: 0.5;
+  filter: blur(150px);
+  right: 100px;
+  z-index: -1;
+  top: 0;
+}
+
+.banner-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: var(--dark-secondary);
+  opacity: 0.5;
+  filter: blur(150px);
+  z-index: -1;
+  bottom: 0;
+  top: 100%;
+  left: 0px;
+}
+
+
+/* Initially hide all paths */
+path.codeline {
+  opacity: 0;
+}
+
+/* Keyframes for animation */
+@keyframes revealPath {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeRightbox {
+  0% {
+    opacity: 0;
+
+  }
+
+  100% {
+    opacity: 1;
+
+  }
+}
+
+/* Sequential animation for each codeline */
+.codeline1 {
+  animation: revealPath 4s steps(22) 0s infinite;
+}
+
+.codeline2 {
+  animation: revealPath 4s steps(22) 0.14s infinite;
+}
+
+.codeline3 {
+  animation: revealPath 4s steps(22) 0.28s infinite;
+}
+
+.codeline4 {
+  animation: revealPath 4s steps(22) 0.42s infinite;
+}
+
+.codeline5 {
+  animation: revealPath 4s steps(22) 0.56s infinite;
+}
+
+.codeline6 {
+  animation: revealPath 4s steps(22) 0.7s infinite;
+}
+
+.codeline7 {
+  animation: revealPath 4s steps(22) 0.84s infinite;
+}
+
+.codeline8 {
+  animation: revealPath 4s steps(22) 0.98s infinite;
+}
+
+.codeline9 {
+  animation: revealPath 4s steps(22) 1.12s infinite;
+}
+
+.codeline10 {
+  animation: revealPath 4s steps(22) 1.26s infinite;
+}
+
+.codeline11 {
+  animation: revealPath 4s steps(22) 1.4s infinite;
+}
+
+.codeline12 {
+  animation: revealPath 4s steps(22) 1.54s infinite;
+}
+
+.codeline13 {
+  animation: revealPath 4s steps(22) 1.68s infinite;
+}
+
+.codeline14 {
+  animation: revealPath 4s steps(22) 1.82s infinite;
+}
+
+.codeline15 {
+  animation: revealPath 4s steps(22) 1.96s infinite;
+}
+
+.codeline16 {
+  animation: revealPath 4s steps(22) 2.1s infinite;
+}
+
+.codeline17 {
+  animation: revealPath 4s steps(22) 2.24s infinite;
+}
+
+.codeline18 {
+  animation: revealPath 4s steps(22) 2.38s infinite;
+}
+
+.codeline19 {
+  animation: revealPath 4s steps(22) 2.52s infinite;
+}
+
+.codeline20 {
+  animation: revealPath 4s steps(22) 2.66s infinite;
+}
+
+.codeline21 {
+  animation: revealPath 4s steps(22) 2.8s infinite;
+}
+
+.codeline22 {
+  animation: revealPath 4s steps(22) 2.94s infinite;
+}
+
+/* Boxes animation */
+
+.tag-box {
+  animation: fadeRightbox 2s;
+}
+
+.curly-box {
+  animation: fadeRightbox 3s;
+}
+
+.react-box {
+  animation: fadeRightbox 4s;
+}
+
+.css-box {
+  animation: fadeRightbox 2s;
+}
+
+.html-box {
+  animation: fadeRightbox 3s;
+}
+
+
+/* .button {
+  pointer-events: auto;
+  cursor: pointer;
+  background: #e7e7e7;
+  border: none;
+  padding: 1.5rem 3rem;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  position: relative;
+  display: inline-block;
+}
+
+.button--narvi {
+  font-weight: bold;
+  background: none;
+}
+
+.button::before,
+.button::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.button--narvi::before {
+  content: '';
+  z-index: -1;
+  background: #e7e7e7;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 85% 70%, 80% 70%, 75% 70%, 0 70%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 85% 70%, 80% 70%, 75% 70%, 0 70%);
+  transition: clip-path 0.3s cubic-bezier(0.7, 0, 0.2, 1), -webkit-clip-path 0.3s cubic-bezier(0.7, 0, 0.2, 1), transform 0.3s ease;
+}
+
+.button--narvi span {
+  display: block;
+  position: relative;
+}
+
+.button--narvi>span {
+  transition: transform 0.3s;
+  transform: translate3d(0, -0.556rem, 0);
+  z-index: 1;
+  overflow: hidden;
+}
+
+
+.button--narvi:hover::before {
+  transform: translate3d(0, -10px, 0);
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 85% 70%, 86% 100%, 75% 70%, 0 70%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 85% 70%, 86% 100%, 75% 70%, 0 70%);
+}
+
+.button--narvi:hover>span {
+  transform: translate3d(0, -1.111rem, 0);
+} */
+
+
+
+
+.btn-grad {
+  background-image: linear-gradient(to right, #037971 0%, #00bfb3 51%, #1b9c86 100%);
+  padding: 15px 45px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  /* color: white; */
+  box-shadow: 0 0 20px #02423e;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.btn-grad:hover {
+  background-position: right bottom;
+  text-decoration: none;
 }

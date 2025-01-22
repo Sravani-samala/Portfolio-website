@@ -4,9 +4,12 @@
   "homepage": "https://Sravani-samala.github.io/Portfolio-website",
   "private": true,
   "dependencies": {
+    "autoprefixer": "^10.4.20",
     "cra-template": "1.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "postcss": "^8.5.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^4.2.4"
   },
@@ -37,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "tailwindcss": "^3.4.17"
   }
 }
