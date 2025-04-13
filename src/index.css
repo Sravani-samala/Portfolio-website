@@ -4,67 +4,73 @@
 
 @font-face {
   font-family: "Unbounded";
-  src: url('./assets/fonts/Unbounded-Regular.ttf') format('truetype');
+  src: url("./assets/fonts/Unbounded-Regular.ttf") format("truetype");
   font-display: swap;
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Unbounded";
-  src: url('./assets/fonts/Unbounded-Medium.ttf') format('truetype');
+  src: url("./assets/fonts/Unbounded-Medium.ttf") format("truetype");
   font-display: swap;
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Unbounded";
-  src: url('./assets/fonts/Unbounded-SemiBold.ttf') format('truetype');
+  src: url("./assets/fonts/Unbounded-SemiBold.ttf") format("truetype");
   font-display: swap;
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Unbounded";
-  src: url('./assets/fonts/Unbounded-Bold.ttf') format('truetype');
+  src: url("./assets/fonts/Unbounded-Bold.ttf") format("truetype");
   font-display: swap;
   font-weight: 700;
 }
 
 @font-face {
   font-family: "Unbounded";
-  src: url('./assets/fonts/Unbounded-ExtraBold.ttf') format('truetype');
+  src: url("./assets/fonts/Unbounded-ExtraBold.ttf") format("truetype");
   font-display: swap;
   font-weight: 800;
 }
 
 @font-face {
   font-family: "Jost";
-  src: url('./assets/fonts/Jost-Regular.ttf') format('truetype');
+  src: url("./assets/fonts/Jost-Light.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("./assets/fonts/Jost-Regular.ttf") format("truetype");
   font-display: swap;
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Jost";
-  src: url('./assets/fonts/Jost-Medium.ttf') format('truetype');
+  src: url("./assets/fonts/Jost-Medium.ttf") format("truetype");
   font-display: swap;
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Jost";
-  src: url('./assets/fonts/Jost-SemiBold.ttf') format('truetype');
+  src: url("./assets/fonts/Jost-SemiBold.ttf") format("truetype");
   font-display: swap;
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Jost";
-  src: url('./assets/fonts/Jost-Bold.ttf') format('truetype');
+  src: url("./assets/fonts/Jost-Bold.ttf") format("truetype");
   font-display: swap;
   font-weight: 700;
 }
-
 
 * {
   margin: 0;
@@ -76,12 +82,20 @@
   --bg-dark: #000;
   --dark-primary: #023436;
   --dark-secondary: #037971;
+
+  /* Services card */
+  --card-height: 30vw;
+  --card-margin: 2vw;
+  --card-top-offset: 1.5em;
+  --numcards: 3;
+  --outline-width: 0px;
 }
 
 body {
   padding: 0;
   padding: 0;
   background-color: var(--bg-dark);
+  overflow-x: hidden;
 }
 
 .eclipse {
@@ -91,7 +105,7 @@ body {
 }
 
 .eclipse::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 300px;
   height: 300px;
@@ -135,21 +149,6 @@ body {
   top: 0;
 }
 
-.banner-wrapper::after {
-  content: "";
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background-color: var(--dark-secondary);
-  opacity: 0.5;
-  filter: blur(150px);
-  z-index: -1;
-  bottom: 0;
-  top: 100%;
-  left: 0px;
-}
-
-
 /* Initially hide all paths */
 path.codeline {
   opacity: 0;
@@ -177,12 +176,10 @@ path.codeline {
 @keyframes fadeRightbox {
   0% {
     opacity: 0;
-
   }
 
   100% {
     opacity: 1;
-
   }
 }
 
@@ -275,98 +272,151 @@ path.codeline {
   animation: revealPath 4s steps(22) 2.94s infinite;
 }
 
-/* Boxes animation */
+/* SVG animations starts */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ZoomInBase {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#circle-base,
+#girl,
+#desktop,
+#tab {
+  opacity: 0;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+}
+
+#circle-base {
+  animation: ZoomInBase 1s ease-out forwards;
+}
+
+#desktop {
+  animation: moveUp 0.5s ease-out forwards;
+}
+
+#tab {
+  animation: moveUp 0.7s ease-out forwards;
+}
+
+#girl {
+  animation: moveUp 4s ease-out forwards;
+}
+
+/* Define the floating keyframe animation */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+    /* Float up */
+  }
+
+  100% {
+    transform: translateY(0);
+    /* Float back down */
+  }
+}
+
+/* Apply the floating effect to the five specific boxes */
+.tag-box,
+.curly-box,
+.react-box,
+.html-box,
+.css-box {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 1s;
+  visibility: hidden;
+}
 
 .tag-box {
-  animation: fadeRightbox 2s;
+  animation-delay: 1s;
 }
 
 .curly-box {
-  animation: fadeRightbox 3s;
+  animation-delay: 1.5s;
 }
 
 .react-box {
-  animation: fadeRightbox 4s;
-}
-
-.css-box {
-  animation: fadeRightbox 2s;
+  animation-delay: 2s;
 }
 
 .html-box {
-  animation: fadeRightbox 3s;
+  animation-delay: 2.5s;
 }
 
-
-/* .button {
-  pointer-events: auto;
-  cursor: pointer;
-  background: #e7e7e7;
-  border: none;
-  padding: 1.5rem 3rem;
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  position: relative;
-  display: inline-block;
+.css-box {
+  animation-delay: 3s;
 }
 
-.button--narvi {
-  font-weight: bold;
-  background: none;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
-.button::before,
-.button::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.tag-box,
+.curly-box,
+.react-box,
+.html-box,
+.css-box {
+  animation: float 3s ease-in-out infinite, fadeIn 1s ease-out forwards;
 }
-
-.button--narvi::before {
-  content: '';
-  z-index: -1;
-  background: #e7e7e7;
-  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 85% 70%, 80% 70%, 75% 70%, 0 70%);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 85% 70%, 80% 70%, 75% 70%, 0 70%);
-  transition: clip-path 0.3s cubic-bezier(0.7, 0, 0.2, 1), -webkit-clip-path 0.3s cubic-bezier(0.7, 0, 0.2, 1), transform 0.3s ease;
-}
-
-.button--narvi span {
-  display: block;
-  position: relative;
-}
-
-.button--narvi>span {
-  transition: transform 0.3s;
-  transform: translate3d(0, -0.556rem, 0);
-  z-index: 1;
-  overflow: hidden;
-}
-
-
-.button--narvi:hover::before {
-  transform: translate3d(0, -10px, 0);
-  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 85% 70%, 86% 100%, 75% 70%, 0 70%);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 85% 70%, 86% 100%, 75% 70%, 0 70%);
-}
-
-.button--narvi:hover>span {
-  transform: translate3d(0, -1.111rem, 0);
-} */
-
-
-
 
 .btn-grad {
-  background-image: linear-gradient(to right, #037971 0%, #00bfb3 51%, #1b9c86 100%);
+  background-image: linear-gradient(
+    to right,
+    #037971 0%,
+    #00bfb3 51%,
+    #1b9c86 100%
+  );
   padding: 15px 45px;
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
-  /* color: white; */
   box-shadow: 0 0 20px #02423e;
   border-radius: 10px;
   display: inline-block;
@@ -375,4 +425,238 @@ path.codeline {
 .btn-grad:hover {
   background-position: right bottom;
   text-decoration: none;
+}
+
+/* About section starts */
+.code-bg {
+  position: relative;
+  z-index: 1;
+}
+
+.code-bg::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/images/code-background.svg");
+  background-repeat: repeat-y;
+  background-position: right;
+  background-size: contain;
+  top: 0;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.my-photo {
+  box-shadow: -7px 6px 20px 0px var(--dark-primary);
+  width: 90%;
+  margin-left: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Skills section */
+
+.skills-wrapper {
+  position: relative;
+}
+
+.skills-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: var(--dark-secondary);
+  opacity: 0.5;
+  filter: blur(150px);
+  left: 0px;
+  z-index: -1;
+  top: 0;
+}
+
+.skills-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url("./assets/images/bg-image.svg");
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-position: center;
+  background-size: 100%;
+  background-attachment: scroll;
+  opacity: 0.1;
+}
+
+@keyframes MarqueeAnimation {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-animation {
+  display: flex;
+  gap: 1.5rem;
+  animation: MarqueeAnimation 30s linear infinite;
+  white-space: nowrap;
+}
+
+.skill-box {
+  transition: 0.4s all ease;
+}
+
+.skill-box:hover {
+  border-color: #02302c;
+  box-shadow: 0px 0px 20px 3px #02302c;
+}
+
+/* Services section */
+
+.services-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* .services-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: var(--dark-secondary);
+  opacity: 0.5;
+  filter: blur(150px);
+  right: 0px;
+  z-index: -1;
+  top: 50%;
+} */
+
+.services-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/images/code-background.svg");
+  background-repeat: repeat-y;
+  background-position: left;
+  background-size: 80%;
+  top: 0;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.service-box {
+  z-index: 1;
+}
+
+.service-box::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(0deg, transparent, #037971);
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: height 0.3s;
+  z-index: -1;
+  opacity: 0.4;
+  border-radius: 24px;
+}
+
+.service-box:hover::before {
+  height: 50%;
+}
+
+.service-box svg {
+  transition: 0.3s all ease-in-out;
+}
+
+#cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(var(--numcards), var(--card-height));
+  gap: var(--card-margin);
+  margin-bottom: var(--card-margin);
+}
+
+#card-1 {
+  --index: 1;
+}
+
+#card-2 {
+  --index: 2;
+}
+
+#card-3 {
+  --index: 3;
+}
+
+#card-4 {
+  --index: 4;
+}
+
+.card {
+  position: sticky;
+  top: 0;
+  padding-top: calc(var(--index) * var(--card-top-offset));
+}
+
+/* Animation */
+@supports (animation-timeline: works) {
+  @scroll-timeline cards-element-scrolls-in-body {
+    source: selector(body);
+    scroll-offsets: selector(#cards) start 1, selector(#cards) start 0;
+    start: selector(#cards) start 1;
+    end: selector(#cards) start 0;
+    time-range: 4s;
+  }
+
+  .card {
+    --index0: calc(var(--index) - 1);
+    --reverse-index: calc(var(--numcards) - var(--index0));
+    --reverse-index0: calc(var(--reverse-index) - 1);
+  }
+
+  .card__content {
+    transform-origin: 50% 0%;
+    will-change: transform;
+
+    --duration: calc(var(--reverse-index0) * 1s);
+    --delay: calc(var(--index0) * 1s);
+
+    animation: var(--duration) linear scale var(--delay) forwards;
+    animation-timeline: cards-element-scrolls-in-body;
+  }
+
+  @keyframes scale {
+    to {
+      transform: scale(calc(1.1 - calc(0.1 * var(--reverse-index))));
+    }
+  }
+}
+
+/* Projects Section */
+
+.project-image {
+  width: 100%;
+  border-radius: 17px;
+  border: 1px solid #03797140;
+}
+
+.project-box {
+  transition: 0.4s all ease;
+}
+
+.project-box:hover {
+  box-shadow: 0px 10px 0px #00bfb3;
 }
