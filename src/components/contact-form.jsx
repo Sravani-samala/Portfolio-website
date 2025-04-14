@@ -56,7 +56,7 @@ function Contactform() {
             name="phone"
             placeholder="Phone Number"
             autoComplete="off"
-            className="text-start bg-white bg-opacity-5 text-white px-4 py-3 w-full capitalize rounded-[6px] outline-none placeholder:text-white/50 font-Jost font-medium mb-4"
+            className="text-start bg-white bg-opacity-5 text-white px-4 py-3 w-full rounded-[6px] outline-none placeholder:text-white/50 font-Jost font-medium mb-4"
           />
         </div>
         <div className="col-12">
