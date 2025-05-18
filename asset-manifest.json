@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Portfolio-website/static/css/main.e9509d78.css",
-    "main.js": "/Portfolio-website/static/js/main.117cc5c7.js",
+    "main.css": "/Portfolio-website/static/css/main.cafd1890.css",
+    "main.js": "/Portfolio-website/static/js/main.dad40694.js",
     "static/media/sravani-image.png": "/Portfolio-website/static/media/sravani-image.ffeb508cef7b726de8a7.png",
     "static/media/pro-3.png": "/Portfolio-website/static/media/pro-3.66f9078b026671b32b1a.png",
     "static/media/pro-2.png": "/Portfolio-website/static/media/pro-2.612dc855e9d2c16ddad4.png",
@@ -32,6 +32,7 @@
     "static/media/ChatGPT.svg": "/Portfolio-website/static/media/ChatGPT.acd5239f04aab7d1bc9ac45873e47081.svg",
     "static/media/squarespace.svg": "/Portfolio-website/static/media/squarespace.45692e4dfe94bb08cf7d7f6cdf80e8a2.svg",
     "static/media/experience.svg": "/Portfolio-website/static/media/experience.b9ff32732f641b0c4eeb8a739da64405.svg",
+    "static/media/email-box.svg": "/Portfolio-website/static/media/email-box.4a960a07ad99fe7f389628de832f391c.svg",
     "static/media/bootstrap.svg": "/Portfolio-website/static/media/bootstrap.e4d947b75c79a6448263c3f1cd3f1a1e.svg",
     "static/media/call-calling.svg": "/Portfolio-website/static/media/call-calling.32c2c8d1b7ba23f4445b4efc753a115b.svg",
     "static/media/shopify.svg": "/Portfolio-website/static/media/shopify.d81dd6c8b72005787e81b98620f99bf3.svg",
@@ -53,11 +54,11 @@
     "static/media/html.svg": "/Portfolio-website/static/media/html.2521d94e81a8f4ce40d4fc91f8b48816.svg",
     "static/media/readmore.svg": "/Portfolio-website/static/media/readmore.6a710a5b7e76294116213bd032a9093a.svg",
     "static/media/webflow.svg": "/Portfolio-website/static/media/webflow.eeec31ff81dabbeee260fbd61a828563.svg",
-    "main.e9509d78.css.map": "/Portfolio-website/static/css/main.e9509d78.css.map",
-    "main.117cc5c7.js.map": "/Portfolio-website/static/js/main.117cc5c7.js.map"
+    "main.cafd1890.css.map": "/Portfolio-website/static/css/main.cafd1890.css.map",
+    "main.dad40694.js.map": "/Portfolio-website/static/js/main.dad40694.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9509d78.css",
-    "static/js/main.117cc5c7.js"
+    "static/css/main.cafd1890.css",
+    "static/js/main.dad40694.js"
   ]
 }
