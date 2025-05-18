@@ -30,7 +30,7 @@ function Contactform() {
     <div className="">
       <form
         onSubmit={onSubmit}
-        className="bg-white p-8 rounded-3xl bg-opacity-5 mb-6 w-full "
+        className="bg-white sm:p-8 p-5 rounded-3xl bg-opacity-5 w-full "
       >
         <div className="col-12 relative">
           <input

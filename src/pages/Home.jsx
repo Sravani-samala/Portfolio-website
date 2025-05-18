@@ -38,11 +38,18 @@ import { ReactComponent as CallIcon } from "../assets/icons/call-calling.svg";
 import { ReactComponent as EmailIcon } from "../assets/icons/sms-tracking.svg";
 import { ReactComponent as Whatsapp } from "../assets/icons/whatsapp.svg";
 import { ReactComponent as ContactUs } from "../assets/images/contact-us.svg";
+import { ReactComponent as EmailBox } from "../assets/icons/email-box.svg";
+
+import SplitText from "../components/splitText";
+
+const handleAnimationComplete = () => {
+  console.log("All letters have animated!");
+};
 
 const Home = () => {
   return (
     <main>
-      <section className="py-[100px] relative banner-wrapper">
+      <section className="md:py-[100px] sm:py-[70px] py-[50px] relative banner-wrapper">
         <div className="bg-code absolute font-Unbounded leading-[100%] text-[30vw] top-0 bottom-0 left-0 right-0 mx-auto text-center text-white text-opacity-[0.03] z-[-1]">
           Code
         </div>
@@ -53,12 +60,26 @@ const Home = () => {
                 <span className="text-secondary font-bold font-Unbounded text-base">
                   &#123;
                 </span>{" "}
-                Introduction{" "}
+                <SplitText
+                  text="Introduction"
+                  className="text-white"
+                  delay={150}
+                  animationFrom={{
+                    opacity: 0,
+                    transform: "translate3d(0,50px,0)",
+                  }}
+                  animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+                  easing="easeOutCubic"
+                  threshold={0.2}
+                  rootMargin="-50px"
+                  onLetterAnimationComplete={handleAnimationComplete}
+                />{" "}
                 <span className="text-secondary font-bold font-Unbounded text-base">
                   &#125;
                 </span>
               </p>
-              <h1 className="xl:text-[52px] lg:text-[42px] sm:text-[48px] font-Unbounded font-medium text-white max-w-[650px]">
+
+              <h1 className="xl:text-[52px] lg:text-[42px] sm:text-[48px] text-4xl leading-normal font-Unbounded font-medium text-white max-w-[650px]">
                 Hi, I am Sravani, a{" "}
                 <span className="text-secondary">Frontend</span> Developer
               </h1>
@@ -77,7 +98,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="about-wrapper relative py-[100px] code-bg">
+      <section className="about-wrapper relative lg:py-[100px] py-[50px] code-bg">
         {/* <img src={brace} alt="brace" className="brace absolute h-80 top-0" /> */}
         <div className="container mx-auto">
           <div className="col">
@@ -90,28 +111,36 @@ const Home = () => {
                 &#125;
               </span>
             </p>
-            <h2 className="text-white text-center text-[42px] font-Unbounded leading-[normal] py-3 max-w-[767px] mx-auto">
+            <h2 className="text-white text-center md:text-[42px] sm:text-4xl text-3xl font-Unbounded leading-[normal] py-3 max-w-[767px] mx-auto">
               {/* I can deliver results that exceed your expectations. */}
               About me
             </h2>
           </div>
 
-          <div className="flex mt-[50px] gap-[80px] md:flex-nowrap flex-wrap">
-            <div className="md:w-[50%] w-full relative">
-              <img
-                src={MyPhoto1}
-                alt="sravani photo"
-                className="my-photo rounded-[20px]"
-              />
-              <div className="bg-secondary p-[30px] absolute -top-12 text-center rounded-[20px] shadow-[0_5px_10px_0px_rgba(0,0,0,0.4)] ">
-                <strong className="text-white text-5xl font-Jost">2.5 +</strong>
-                <span className="block text-white text-lg font-Jost mt-2">
-                  Years Experience
-                </span>
+          <div className="flex mt-[50px] lg:gap-[80px] gap-[40px] md:flex-nowrap items-start flex-wrap">
+            <div className="md:w-[50%] w-full md:sticky relative md:top-14 top-0">
+              <div className="relative">
+                <div class="img-wrapper">
+                  <div class="img-inner-wrapper">
+                    <img
+                      src={MyPhoto1}
+                      alt="sravani photo"
+                      className="my-photo rounded-[20px] "
+                    />
+                  </div>
+                </div>
+                <div className="bg-secondary lg:p-[30px] p-[18px] absolute -top-12 text-center rounded-[20px] shadow-[0_5px_10px_0px_rgba(0,0,0,0.4)] ">
+                  <strong className="text-white lg:text-5xl text-4xl font-Jost">
+                    2.5 +
+                  </strong>
+                  <span className="block text-white lg:text-lg text-base font-Jost mt-2">
+                    Years Experience
+                  </span>
+                </div>
               </div>
             </div>
             <div className="md:w-[50%] w-full">
-              <p className="text-white text-lg font-Jost text-opacity-90 mb-3">
+              <p className="text-white lg:text-lg text-base font-Jost text-opacity-90 mb-3">
                 Hi, I’m Sravani Samala, a passionate frontend web developer with
                 over 3 years of experience. I specialize in creating E-commerce,
                 Informative, Static, and Dynamic websites that are
@@ -122,32 +151,32 @@ const Home = () => {
               </p>
 
               <div className="flex gap-3 items-center mb-3">
-                <EducationIcon className="w-10 h-auto fill-secondary" />
-                <h2 className="text-white text-start text-[22px] font-Unbounded leading-[normal] py-3 design-heading">
+                <EducationIcon className="lg:w-10 w-8 h-auto fill-secondary" />
+                <h2 className="text-white text-start lg:text-[22px] text-lg font-Unbounded leading-[normal] py-3 design-heading">
                   Education
                 </h2>
               </div>
-              <div className="p-5 bg-secondary bg-opacity-15 rounded-[20px] border border-secondary border-opacity-35F mb-6">
-                <h2 className="text-white font-Unbounded text-lg">
+              <div className="lg:p-5 p-4 bg-secondary bg-opacity-15 rounded-[20px] border border-secondary border-opacity-35F mb-6">
+                <h2 className="text-white font-Unbounded lg:text-lg text-base">
                   Diploma in computer science
                 </h2>
-                <span className="text-white font-Jost text-base">
+                <span className="text-white font-Jost lg:text-base text-sm">
                   Gujarat Technological University -{" "}
                   <strong className="text-secondary">[ 7.89 ] CGPA</strong>
                 </span>
               </div>
 
               <div className="flex gap-3 items-center mb-3">
-                <ExperienceIcon className="w-10 h-auto fill-secondary" />
-                <h2 className="text-white text-start text-[22px] font-Unbounded leading-[normal] py-3 design-heading">
+                <ExperienceIcon className="lg:w-10 w-8 h-auto fill-secondary" />
+                <h2 className="text-white text-start lg:text-[22px] text-lg font-Unbounded leading-[normal] py-3 design-heading">
                   Experience
                 </h2>
               </div>
-              <div className="p-5 bg-secondary bg-opacity-15 rounded-[20px] border border-secondary border-opacity-35F">
-                <h2 className="text-white font-Unbounded text-lg">
+              <div className="lg:p-5 p-4 bg-secondary bg-opacity-15 rounded-[20px] border border-secondary border-opacity-35F">
+                <h2 className="text-white font-Unbounded lg:text-lg text-base">
                   Frontend developer
                 </h2>
-                <span className="text-white font-Jost text-base">
+                <span className="text-white font-Jost lg:text-base text-sm">
                   At InspireFox Studio -{" "}
                   <strong className="text-secondary text-lg">2.5 +</strong>
                 </span>
@@ -157,7 +186,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="skills-wrapper relative py-[100px]">
+      <section className="skills-wrapper relative lg:py-[100px] py-[50px]">
         <div className="container mx-auto">
           <div className="col">
             <p className="text-white text-center sm:text-sm text-xs uppercase font-Jost font-normal tracking-wider">
@@ -169,50 +198,50 @@ const Home = () => {
                 &#125;
               </span>
             </p>
-            <h2 className="text-white text-center text-[42px] font-Unbounded leading-[normal] py-3 max-w-[767px] mx-auto">
+            <h2 className="text-white text-center md:text-[42px] sm:text-4xl text-3xl font-Unbounded leading-[normal] py-3 max-w-[767px] mx-auto">
               Skills
             </h2>
           </div>
-          <div className="w-[80%] mx-auto mt-10">
-            <div className="flex flex-grow-1 gap-6 justify-center flex-wrap">
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <HtmlIcon className="fill-none w-14 h-14 mx-auto" />
+          <div className="lg:w-[80%] w-full mx-auto mt-10">
+            <div className="flex flex-grow-1 sm:gap-6 gap-3 justify-center flex-wrap">
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <HtmlIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <CssIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <CssIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <JsIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <JsIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <JqueryIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <JqueryIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <BootstrapIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <BootstrapIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <TailwindIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <TailwindIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <ReactIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <ReactIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <WordpressIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <WordpressIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <ElemetorIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <ElemetorIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <ShopifyIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <ShopifyIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <WixIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <WixIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <WebflowICon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <WebflowICon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <SquareSpaceIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <SquareSpaceIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
             </div>
           </div>
@@ -227,26 +256,26 @@ const Home = () => {
                 &#125;
               </span>
             </p>
-            <h2 className="text-white text-center text-[42px] font-Unbounded leading-[normal] py-3 max-w-[767px] mx-auto">
+            <h2 className="text-white text-center md:text-[42px] sm:text-4xl text-3xl font-Unbounded leading-[normal] py-3 max-w-[767px] mx-auto">
               Tools
             </h2>
           </div>
-          <div className="w-[80%] mx-auto mt-10">
-            <div className="flex flex-grow-1 gap-6 justify-center flex-wrap">
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <VscodeIcon className="fill-none w-14 h-14 mx-auto" />
+          <div className="lg:w-[80%] w-full mx-auto mt-10">
+            <div className="flex flex-grow-1 sm:gap-6 gap-3 justify-center flex-wrap">
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <VscodeIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <GitIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <GitIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <FigmaIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <FigmaIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <ChatGPTicon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <ChatGPTicon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
-              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer p-8 border border-primary text-center rounded-[20px]">
-                <GeminiIcon className="fill-none w-14 h-14 mx-auto" />
+              <div className="skill-box bg-black bg-opacity-25 hover:bg-opacity-100 hover:-translate-y-2 cursor-pointer sm:p-8 p-6 border border-primary text-center sm:rounded-[20px] rounded-2xl">
+                <GeminiIcon className="fill-none sm:w-14 w-10 sm:h-14 h-10 mx-auto" />
               </div>
             </div>
           </div>
@@ -346,10 +375,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="services-wrapper py-[100px]">
+      <section className="services-wrapper lg:py-[100px] py-[50px]">
         <div className="container mx-auto">
-          <div className="flex gap-[60px] relative  md:flex-nowrap flex-wrap">
-            <div className="md:w-[35%] w-full">
+          <div className="flex lg:gap-[60px] gap-[30px] relative lg:flex-nowrap flex-wrap">
+            <div className="lg:w-[35%] w-full">
               <div className="sticky top-[50px]">
                 <p className="text-white text-start sm:text-sm text-xs uppercase font-Jost font-normal tracking-wider">
                   <span className="text-secondary font-bold font-Unbounded text-base">
@@ -360,10 +389,10 @@ const Home = () => {
                     &#125;
                   </span>
                 </p>
-                <h2 className="text-white text-start text-[42px] font-Unbounded leading-[normal] py-3 max-w-[767px] mx-auto">
+                <h2 className="text-white text-start md:text-[42px] sm:text-4xl text-3xl font-Unbounded leading-[normal] py-3 max-w-[767px] mx-auto">
                   My Services
                 </h2>
-                <p className="text-white text-lg font-Jost text-opacity-90 mb-3">
+                <p className="text-white lg:text-lg text-base font-Jost text-opacity-90 md:mb-3">
                   Hi, I’m Sravani Samala, a passionate frontend web developer
                   with over 3 years of experience. I specialize in creating
                   E-commerce, Informative, Static, and Dynamic websites that are
@@ -375,16 +404,16 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="md:w-[65%] w-full">
+            <div className="lg:w-[65%] w-full">
               <div id="cards">
                 <div id="card-1" className="card">
-                  <div className="card__content flex justify-between items-center bg-black h-full filter-blur-[100px] p-10 border border-opacity-25 border-secondary rounded-[24px] text-center service-box relative gap-6">
-                    <WebDevelopment className="w-[40%] h-[400px] mb-4" />
-                    <div className="w-[60%] text-left">
-                      <h3 className="text-white font-Unbounded text-3xl">
+                  <div className="card__content flex md:flex-nowrap flex-wrap justify-between items-center bg-black h-full filter-blur-[100px] md:p-10 sm:p-8 p-6 border border-opacity-25 border-secondary rounded-[24px] text-center service-box relative md:gap-6 gap-3">
+                    <WebDevelopment className="md:w-[40%] w-full md:h-[400px] h-[200px] md:mb-4 mb-0" />
+                    <div className="md:w-[60%] w-full text-left">
+                      <h3 className="text-white font-Unbounded lg:text-3xl text-[22px]">
                         Website Development
                       </h3>
-                      <p className="text-white text-lg font-Jost my-3">
+                      <p className="text-white lg:text-lg text-base font-Jost my-3">
                         Frontend Website development with Optimized for all
                         screen sizes for a seamless user experience.
                       </p>
@@ -410,13 +439,13 @@ const Home = () => {
                   </div>
                 </div>
                 <div id="card-2" className="card">
-                  <div className="card__content flex justify-between items-center bg-black h-full filter-blur-[100px] p-10 border border-opacity-25 border-secondary rounded-[24px] text-center service-box relative gap-6">
-                    <CustomDevelopment className="w-[40%] h-[400px] mb-4" />
-                    <div className="w-[60%] text-left">
-                      <h3 className="text-white font-Unbounded text-3xl">
+                  <div className="card__content flex md:flex-nowrap flex-wrap justify-between items-center bg-black h-full filter-blur-[100px] md:p-10 sm:p-8 p-6 border border-opacity-25 border-secondary rounded-[24px] text-center service-box relative md:gap-6 gap-3">
+                    <CustomDevelopment className="md:w-[40%] w-full md:h-[400px] h-[200px] md:mb-4 mb-0" />
+                    <div className="md:w-[60%] w-full text-left">
+                      <h3 className="text-white font-Unbounded lg:text-3xl text-[22px]">
                         Custom Website Design
                       </h3>
-                      <p className="text-white text-lg font-Jost my-3">
+                      <p className="text-white lg:text-lg text-base font-Jost my-3">
                         Unique designs built from scratch to match your vision.
                       </p>
                       <ul className="text-white font-Jost">
@@ -441,13 +470,13 @@ const Home = () => {
                   </div>
                 </div>
                 <div id="card-3" className="card">
-                  <div className="card__content flex justify-between items-center bg-black h-full filter-blur-[100px] p-10 border border-opacity-25 border-secondary rounded-[24px] text-center service-box relative gap-6">
-                    <EcommerceDevelopment className="w-[40%] h-[400px] mb-4" />
-                    <div className="w-[60%] text-left">
-                      <h3 className="text-white font-Unbounded text-3xl">
+                  <div className="card__content flex md:flex-nowrap flex-wrap justify-between items-center bg-black h-full filter-blur-[100px] md:p-10 sm:p-8 p-6 border border-opacity-25 border-secondary rounded-[24px] text-center service-box relative md:gap-6 gap-3">
+                    <EcommerceDevelopment className="md:w-[40%] w-full md:h-[400px] h-[200px] md:mb-4 mb-0" />
+                    <div className="md:w-[60%] w-full text-left">
+                      <h3 className="text-white font-Unbounded lg:text-3xl text-[22px]">
                         CMS Website Development
                       </h3>
-                      <p className="text-white text-lg font-Jost my-3">
+                      <p className="text-white lg:text-lg text-base font-Jost my-3">
                         WordPress, Webflow, Wix and Shopify solutions for
                         scalable. businesses
                       </p>
@@ -479,7 +508,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="projects-wrapper pt-[50px] pb-[100px]">
+      <section className="projects-wrapper relative lg:pt-[50px] lg:pb-[100px] pb-[70px]">
         <div className="container mx-auto">
           <div className="col mb-8">
             <p className="text-white text-center sm:text-sm text-xs uppercase font-Jost font-normal tracking-wider">
@@ -492,14 +521,14 @@ const Home = () => {
               </span>
             </p>
             <h2
-              className="text-white text-center font-Unbounded text-[42px] font-
+              className="text-white text-center font-Unbounded md:text-[42px] sm:text-4xl text-3xl font-
             leading-[normal] py-3 max-w-[767px] mx-auto"
             >
               My Projects
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-10">
-            <div className="project-box cursor-pointer hover:-translate-y-2 bg-black bg-opacity-70 filter-blur-[100px] p-10 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-10">
+            <div className="project-box cursor-pointer hover:-translate-y-2 bg-black bg-opacity-70 filter-blur-[100px] lg:p-5 p-5 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <HtmlIcon className="w-10 h-10" />
@@ -523,10 +552,10 @@ const Home = () => {
               <img
                 src={Pro1}
                 alt="Project1"
-                className="w-full mt-6 h-[320px] object-cover project-image"
+                className="w-full mt-6 h-auto object-cover project-image"
               />
             </div>
-            <div className="project-box cursor-pointer hover:-translate-y-2 bg-black bg-opacity-70 filter-blur-[100px] p-10 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
+            <div className="project-box cursor-pointer hover:-translate-y-2 bg-black bg-opacity-70 filter-blur-[100px] lg:p-5 p-5 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <HtmlIcon className="w-10 h-10" />
@@ -550,10 +579,10 @@ const Home = () => {
               <img
                 src={Pro2}
                 alt="Project2"
-                className="w-full mt-6 h-[320px] object-cover project-image"
+                className="w-full mt-6 h-auto object-cover project-image"
               />
             </div>
-            <div className="project-box cursor-pointer hover:-translate-y-2 bg-black bg-opacity-70 filter-blur-[100px] p-10 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
+            <div className="project-box cursor-pointer hover:-translate-y-2 bg-black bg-opacity-70 filter-blur-[100px] lg:p-5 p-5 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <HtmlIcon className="w-10 h-10" />
@@ -577,43 +606,16 @@ const Home = () => {
               <img
                 src={Pro1}
                 alt="Project1"
-                className="w-full mt-6 h-[320px] object-cover project-image"
-              />
-            </div>
-            <div className="project-box cursor-pointer hover:-translate-y-2 bg-black bg-opacity-70 filter-blur-[100px] p-10 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <HtmlIcon className="w-10 h-10" />
-                  <div className="col-span-2 text-left">
-                    <h3 className="text-white font-Unbounded text-base">
-                      Frontend website
-                    </h3>
-                    <p className="text-white text-[12px] font-Jost uppercase mt-1">
-                      HTML | CSS | JS
-                    </p>
-                  </div>
-                </div>
-                <a
-                  href="#"
-                  className="bg-secondary text-black font-Jost text-base group px-4 py-2 transition-all duration-300 ease-in-out rounded-lg flex items-center gap-2 hover:bg-primary hover:text-white"
-                >
-                  Visit{" "}
-                  <Readmore className="fill-black w-[16px] h-auto group-hover:fill-white transition-all duration-300 ease-in-out" />
-                </a>
-              </div>
-              <img
-                src={Pro2}
-                alt="Project2"
-                className="w-full mt-6 h-[320px] object-cover project-image"
+                className="w-full mt-6 h-auto object-cover project-image"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="contact-wrapper">
+      <section className="contact-wrapper relative lg:pb-[100px] pb-[70px]">
         <div className="container mx-auto">
-          <div className="col">
+          {/* <div className="col">
             <p className="text-white text-center sm:text-sm text-xs uppercase font-Jost font-normal tracking-wider">
               <span className="text-secondary font-bold font-Unbounded text-base">
                 &#123;
@@ -628,7 +630,7 @@ const Home = () => {
             </h2>
             <div className="info-wrapper">
               <div
-                className="grid grid-cols-3 gap-8
+                className="grid md:grid-cols-3 grid-cols-2 gap-8
                my-5"
               >
                 <a
@@ -656,10 +658,54 @@ const Home = () => {
                 </a>
               </div>
             </div>
-          </div>
-          <div className="grid grid-cols-2 gap-10 mt-[50px]">
-            <div>
-              <ContactUs className="w-full" />
+          </div> */}
+          <div className="grid md:grid-cols-2 sm:gap-10 gap-5 mt-[50px] items-center">
+            <div className="relative">
+              <EmailBox className="w-[50%] h-auto email-box absolute opacity-5 -right-0 bottom-0" />
+
+              <p className="text-white text-start sm:text-sm text-xs uppercase font-Jost font-normal tracking-wider">
+                <span className="text-secondary font-bold font-Unbounded text-base">
+                  &#123;
+                </span>{" "}
+                Let's Talk about ideas{" "}
+                <span className="text-secondary font-bold font-Unbounded text-base">
+                  &#125;
+                </span>
+              </p>
+              <h2 className="text-white text-start md:text-[42px] sm:text-4xl text-3xl capitalize font-Unbounded leading-[normal] py-3 ">
+                Get in touch
+              </h2>
+
+              <div className="info-wrapper">
+                <div
+                  className="grid grid-cols-1 sm:gap-8 gap-5
+               my-5"
+                >
+                  <a
+                    href="tel:8469259994"
+                    className="text-start flex gap-4 items-center text-white sm:text-xl text-base font-Jost font-bold group hover:text-accent transition-all duration-300 ease-in-out break-all"
+                  >
+                    <CallIcon className="fill-white text-white bg-secondary bg-opacity-15 border border-secondary sm:w-16 sm:h-16 w-12 h-12 rounded-[8px] p-3 group-hover:bg-opacity-100 transition-all duration-300 ease-in-out" />{" "}
+                    8469259994
+                  </a>
+
+                  <a
+                    href="mailto:sravanisamala79884@gmail.com"
+                    className="text-start flex gap-4 items-center text-white sm:text-xl text-base font-Jost font-bold group hover:text-accent transition-all duration-300 ease-in-out break-all"
+                  >
+                    <EmailIcon className="fill-white text-white bg-secondary bg-opacity-15 border border-secondary sm:w-16 sm:h-16 w-12 h-12 rounded-[8px] p-3 group-hover:bg-opacity-100 transition-all duration-300 ease-in-out" />{" "}
+                    sravanisamala79884@gmail.com
+                  </a>
+
+                  <a
+                    href="https://wa.me/919876543210"
+                    className="text-start flex gap-4 items-center text-white sm:text-xl text-base font-Jost font-bold group hover:text-accent transition-all duration-300 ease-in-out break-all"
+                  >
+                    <Whatsapp className="fill-white text-white bg-secondary bg-opacity-15 border border-secondary sm:w-16 sm:h-16 w-12 h-12 rounded-[8px] p-3 group-hover:bg-opacity-100 transition-all duration-300 ease-in-out" />{" "}
+                    Chat on WhatsApp
+                  </a>
+                </div>
+              </div>
             </div>
             <div className="form-wrapper">
               <Contactform />

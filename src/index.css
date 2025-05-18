@@ -326,6 +326,7 @@ path.codeline {
 
 #circle-base {
   animation: ZoomInBase 1s ease-out forwards;
+  transform-origin: bottom;
 }
 
 #desktop {
@@ -456,6 +457,171 @@ path.codeline {
   object-position: top center;
 }
 
+.img-wrapper {
+  overflow: hidden;
+  position: relative;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  background: #2b2b2b;
+  padding: 1px;
+  -webkit-clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 68.57%,
+    100% 70.85%,
+    99.88% 72.9%,
+    99.3945% 74.77%,
+    98.51% 76.15%,
+    97.56% 77.05%,
+    95.86% 78.04%,
+    93.92% 78.39%,
+    92.06% 78.5%,
+    90.71% 78.54%,
+    89.32% 78.68%,
+    88.12% 79.01%,
+    87.36% 79.25%,
+    86.58% 79.73%,
+    85.39% 80.85%,
+    84.41% 82.68%,
+    83.89% 84.27%,
+    83.53% 86.04%,
+    83.38% 87.67%,
+    83.32% 89.37%,
+    83.33% 90.93%,
+    83.25% 92.45%,
+    83.18% 93.92%,
+    82.85% 95.45%,
+    82.32% 96.55%,
+    81.59% 97.85%,
+    80.58% 98.73%,
+    79.41% 99.39%,
+    78.25% 99.83%,
+    75.85% 100%,
+    0% 100%
+  );
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 68.57%,
+    100% 70.85%,
+    99.88% 72.9%,
+    99.3945% 74.77%,
+    98.51% 76.15%,
+    97.56% 77.05%,
+    95.86% 78.04%,
+    93.92% 78.39%,
+    92.06% 78.5%,
+    90.71% 78.54%,
+    89.32% 78.68%,
+    88.12% 79.01%,
+    87.36% 79.25%,
+    86.58% 79.73%,
+    85.39% 80.85%,
+    84.41% 82.68%,
+    83.89% 84.27%,
+    83.53% 86.04%,
+    83.38% 87.67%,
+    83.32% 89.37%,
+    83.33% 90.93%,
+    83.25% 92.45%,
+    83.18% 93.92%,
+    82.85% 95.45%,
+    82.32% 96.55%,
+    81.59% 97.85%,
+    80.58% 98.73%,
+    79.41% 99.39%,
+    78.25% 99.83%,
+    75.85% 100%,
+    0% 100%
+  );
+}
+
+.img-wrapper .img-inner-wrapper {
+  overflow: hidden;
+  border-radius: 19px;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
+  -ms-border-radius: 19px;
+  -o-border-radius: 19px;
+  -webkit-clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 68.57%,
+    100% 70.85%,
+    99.88% 72.9%,
+    99.3945% 74.77%,
+    98.51% 76.15%,
+    97.56% 77.05%,
+    95.86% 78.04%,
+    93.92% 78.39%,
+    92.06% 78.5%,
+    90.71% 78.54%,
+    89.32% 78.68%,
+    88.12% 79.01%,
+    87.36% 79.25%,
+    86.58% 79.73%,
+    85.39% 80.85%,
+    84.41% 82.68%,
+    83.89% 84.27%,
+    83.53% 86.04%,
+    83.38% 87.67%,
+    83.32% 89.37%,
+    83.33% 90.93%,
+    83.25% 92.45%,
+    83.18% 93.92%,
+    82.85% 95.45%,
+    82.32% 96.55%,
+    81.59% 97.85%,
+    80.58% 98.73%,
+    79.41% 99.39%,
+    78.25% 99.83%,
+    75.85% 100%,
+    0% 100%
+  );
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 68.57%,
+    100% 70.85%,
+    99.88% 72.9%,
+    99.3945% 74.77%,
+    98.51% 76.15%,
+    97.56% 77.05%,
+    95.86% 78.04%,
+    93.92% 78.39%,
+    92.06% 78.5%,
+    90.71% 78.54%,
+    89.32% 78.68%,
+    88.12% 79.01%,
+    87.36% 79.25%,
+    86.58% 79.73%,
+    85.39% 80.85%,
+    84.41% 82.68%,
+    83.89% 84.27%,
+    83.53% 86.04%,
+    83.38% 87.67%,
+    83.32% 89.37%,
+    83.33% 90.93%,
+    83.25% 92.45%,
+    83.18% 93.92%,
+    82.85% 95.45%,
+    82.32% 96.55%,
+    81.59% 97.85%,
+    80.58% 98.73%,
+    79.41% 99.39%,
+    78.25% 99.83%,
+    75.85% 100%,
+    0% 100%
+  );
+}
+
+.img-wrapper .img-inner-wrapper img {
+  width: 100%;
+}
+
 /* Skills section */
 
 .skills-wrapper {
@@ -526,19 +692,6 @@ path.codeline {
   z-index: 1;
 }
 
-/* .services-wrapper::before {
-  content: "";
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background-color: var(--dark-secondary);
-  opacity: 0.5;
-  filter: blur(150px);
-  right: 0px;
-  z-index: -1;
-  top: 50%;
-} */
-
 .services-wrapper::after {
   content: "";
   position: absolute;
@@ -601,10 +754,6 @@ path.codeline {
   --index: 3;
 }
 
-#card-4 {
-  --index: 4;
-}
-
 .card {
   position: sticky;
   top: 0;
@@ -659,4 +808,57 @@ path.codeline {
 
 .project-box:hover {
   box-shadow: 0px 10px 0px #00bfb3;
+}
+
+.projects-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: var(--dark-secondary);
+  opacity: 0.5;
+  filter: blur(150px);
+  right: 0px;
+  z-index: -1;
+  top: 0;
+}
+
+.contact-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-color: var(--dark-secondary);
+  opacity: 0.3;
+  filter: blur(150px);
+  left: 0px;
+  z-index: -1;
+  top: 30%;
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --card-height: 35vw;
+    --card-margin: 0;
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --card-height: 80vw;
+    --card-margin: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --card-height: 150vw;
+    --card-margin: 0;
+  }
+
+  .banner-wrapper::before,
+  .skills-wrapper::before,
+  .projects-wrapper::before {
+    width: 80%;
+    height: 300px;
+  }
 }

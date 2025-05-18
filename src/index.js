@@ -6,15 +6,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import Comingsoon from "./pages/Comingsoon";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter basename="/Portfolio-website">
-    <Header />
+    {/* <Header /> */}
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Comingsoon />} />
     </Routes>
-    <Footer />
+    {/* <Footer /> */}
   </BrowserRouter>
 );
 
