@@ -11,11 +11,12 @@ import Comingsoon from "./pages/Comingsoon";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter basename="/Portfolio-website">
-    {/* <Header /> */}
+    <Header />
     <Routes>
-      <Route path="/" element={<Comingsoon />} />
+      {/* <Route path="/" element={<Comingsoon />} /> */}
+      <Route path="/" element={<Home />} />
     </Routes>
-    {/* <Footer /> */}
+    <Footer />
   </BrowserRouter>
 );
 

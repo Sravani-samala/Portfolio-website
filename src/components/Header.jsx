@@ -1,36 +1,52 @@
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo.svg";
-import { useState } from "react";
+import LogoLight from "../assets/images/logo.svg";
+import LogoDark from "../assets/images/logo-dark.svg";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About me", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
+    { name: "About me", path: "#about" },
+    { name: "Services", path: "#services" },
+    { name: "Projects", path: "#projects" },
+    { name: "Contact", path: "#contact" },
   ];
+
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
 
   return (
     <header className="py-4">
       <div className="container mx-auto">
-        <div className="flex justify-between items-center bg-[#b4b4b4] bg-opacity-10 py-3 px-5 rounded-[50px]">
-          <img src={Logo} alt="Logo" className="w-[200px] h-auto" />
+        <div className="flex justify-between items-center dark:bg-[#b4b4b4] bg-black dark:bg-opacity-10 bg-opacity-20 py-3 px-5 rounded-[50px]">
+          <img src={LogoDark} alt="Logo" className="w-[150px] h-auto dark:hidden block" />
+          <img src={LogoLight} alt="Logo" className="w-[150px] h-auto dark:block hidden" />
           <nav className="hidden lg:flex">
             <ul className="flex items-center gap-[25px]">
               {navItems.map((item) => (
                 <li key={item.name} className="text-center">
-                  <Link
-                    to={item.path}
-                    className="text-white text-sm uppercase font-normal font-Unbounded tracking-wide transition-all duration-300 ease-in-out hover:text-secondary menu-link relative"
+                  <a
+                    href={item.path}
+                    className="text-black dark:text-white text-sm uppercase font-normal font-Jost tracking-wider transition-all duration-300 ease-in-out hover:text-secondary menu-link relative"
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
+            <button
+              className="p-2 rounded-full bg-secondary text-black dark:text-white ml-4"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? "🌙" : "☀️"}
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -77,16 +93,15 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         <nav
-          className={`lg:hidden fixed top-0 right-0 h-full w-[40%] bg-[#1a1a1a] transform ${
-            isOpen ? "translate-x-0" : "translate-x-full"
-          } transition-transform duration-300 ease-in-out z-10`}
+          className={`lg:hidden fixed top-0 right-0 h-full w-[40%] bg-[#1a1a1a] transform ${isOpen ? "translate-x-0" : "translate-x-full"
+            } transition-transform duration-300 ease-in-out z-10`}
         >
           <ul className="flex flex-col items-center gap-6 pt-24">
             {navItems.map((item) => (
               <li key={item.name} className="text-center">
                 <Link
                   to={item.path}
-                  className="text-white text-sm uppercase font-normal font-Unbounded tracking-wide transition-all duration-300 ease-in-out hover:text-secondary"
+                  className="text-black dark:text-white text-sm uppercase font-normal font-Unbounded tracking-wide transition-all duration-300 ease-in-out hover:text-secondary"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
