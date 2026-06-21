@@ -10,7 +10,7 @@ import Comingsoon from "./pages/Comingsoon";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter basename="/Portfolio-website">
+  <BrowserRouter basename="/portfolio">
     <Header />
     <Routes>
       {/* <Route path="/" element={<Comingsoon />} /> */}
