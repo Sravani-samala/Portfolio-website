@@ -29,6 +29,7 @@ import { ReactComponent as WebDevelopment } from "../assets/images/webdevelopmen
 import { ReactComponent as CustomDevelopment } from "../assets/images/custom-design.svg";
 import { ReactComponent as EcommerceDevelopment } from "../assets/images/e-commerce-development.svg";
 import { ReactComponent as Readmore } from "../assets/icons/readmore.svg";
+import Portfolio from "../assets/images/portfolio.png";
 import Aurapro from "../assets/images/aurapro.png";
 import Yazhra from "../assets/images/yazhra.png";
 import Domasight from "../assets/images/domasight-banner.png";
@@ -110,15 +111,18 @@ const Home = () => {
     },
   ];
 
+  const isMobile = window.innerWidth <= 576;
+
   return (
     <main>
       {/* Custom magnetic cursor */}
-      <div className="custom-cursor" aria-hidden="true"></div>
+      {!isMobile && <div className="custom-cursor" />}
+      {/* <div className="custom-cursor" aria-hidden="true"></div> */}
       <div className="cursor-glow"></div>
       <div className="fixed h-full top-0 left-0 right-0 z-[-1] bg-grain"></div>
 
       {/* ─── HERO ─────────────────────────────────────────────────── */}
-      <section className="md:py-[100px] sm:py-[70px] py-[50px] relative banner-wrapper">
+      <section id="hero" className="md:py-[100px] sm:py-[70px] py-[50px] relative banner-wrapper">
         <div className="bg-code absolute font-Unbounded leading-[100%] text-[30vw] top-0 bottom-0 left-0 right-0 mx-auto text-center dark:text-white text-black dark:text-opacity-[0.03] text-opacity-[0.05] z-[-1]">
           DEV
         </div>
@@ -137,7 +141,7 @@ const Home = () => {
               <LineMask
                 as="h1"
                 innerAs="span"
-                className="xl:text-[52px] lg:text-[42px] sm:text-[48px] text-4xl leading-normal font-Unbounded font-medium text-black dark:text-white max-w-[650px] block"
+                className="xl:text-[52px] lg:text-[42px] sm:text-[48px] text-[26px] leading-normal font-Unbounded font-medium text-black dark:text-white max-w-[650px] sm:block inline-block"
                 innerClassName="block"
               >
                 Hi, I am Sravani,{" "}
@@ -192,7 +196,7 @@ const Home = () => {
                 />
                 <div className="bg-secondary lg:p-[30px] p-[18px] absolute md:-bottom-10 md:top-auto -top-7 md:left-auto left-0 lg:-right-20 md:right-0 right-auto text-center rounded-[20px] shadow-[0_5px_10px_0px_rgba(0,0,0,0.4)]">
                   <strong className="dark:text-white text-black lg:text-5xl text-4xl font-Jost">
-                    03 +
+                    04 +
                   </strong>
                   <span className="block dark:text-white text-black lg:text-lg text-base font-Jost mt-2">
                     Years Experience
@@ -376,17 +380,17 @@ const Home = () => {
             {servicesData.map((service) => (
               <div
                 key={service.id}
-                className="service-card group relative rounded-[30px] border border-white/10 bg-[#0f0f0f] overflow-hidden p-8 transition-all duration-300"
+                className="service-card group relative rounded-[30px] border border-white/10 bg-[#0f0f0f] overflow-hidden p-sm-8 p-6 transition-all duration-300"
               >
                 {/* Gloss shine — GSAP moves this on mouse-move */}
                 <div className="card-shine"></div>
                 <div className="absolute inset-0 bg-secondary/10 opacity-0 group-hover:opacity-100 blur-3xl transition-all duration-500"></div>
                 <div className="relative z-10">
                   {service.icon}
-                  <h3 className="text-white font-Unbounded text-[28px] mb-4">
+                  <h3 className="text-white font-Unbounded text-sm-[28px] text-xl mb-4">
                     {service.title}
                   </h3>
-                  <p className="text-white/80 font-Jost text-base leading-relaxed mb-6">
+                  <p className="text-white/80 font-Jost text-sm-base text-sm leading-relaxed mb-sm-6 mb-2">
                     {service.description}
                   </p>
                   <RotatingGradientButton
@@ -476,8 +480,32 @@ const Home = () => {
           </div>
 
           <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-10 cards-3d-perspective">
-                        {/* Card 2 */}
-            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 p-5 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
+            {/* Card 1 */}
+            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 sm:p-5 p-4 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
+              <div className="card-shine"></div>
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <ReactIcon className="w-10 h-10" />
+                  <div className="col-span-2 text-left">
+                    <h3 className="dark:text-white text-black font-Jost text-lg">Portfolio</h3>
+                    <p className="dark:text-white text-black text-[12px] font-Jost uppercase mt-1">
+                      React | Tailwind | GSAP
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  to="#"
+                  className="bg-secondary dark:text-black text-white font-Jost text-base group px-4 py-2 transition-all duration-300 ease-in-out rounded-lg flex items-center gap-2 hover:bg-primary"
+                >
+                  Visit{" "}
+                  <Readmore className="dark:fill-black fill-white w-[16px] h-auto group-hover:fill-white transition-all duration-300 ease-in-out" />
+                </Link>
+              </div>
+              <img src={Portfolio} alt="Portfolio project" className="w-full mt-6 h-auto object-cover project-image" />
+            </div>
+
+            {/* Card 2 */}
+            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 sm:p-5 p-4 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
               <div className="card-shine"></div>
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
@@ -502,11 +530,11 @@ const Home = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 p-5 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
+            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 sm:p-5 p-4 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
               <div className="card-shine"></div>
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <HtmlIcon className="w-10 h-10" />
+                  <ShopifyIcon className="w-10 h-10" />
                   <div className="col-span-2 text-left">
                     <h3 className="dark:text-white text-black font-Jost text-lg">Ecommerce Website</h3>
                     <p className="dark:text-white text-black text-[12px] font-Jost uppercase mt-1">
@@ -526,12 +554,12 @@ const Home = () => {
               <img src={Yazhra} alt="Ecommerce website" className="w-full mt-6 h-auto object-cover project-image" />
             </div>
 
-             {/* Card 4 */}
-            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 p-5 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
+            {/* Card 4 */}
+            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 sm:p-5 p-4 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
               <div className="card-shine"></div>
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <HtmlIcon className="w-10 h-10" />
+                  <WordpressIcon className="w-10 h-10" />
                   <div className="col-span-2 text-left">
                     <h3 className="dark:text-white text-black font-Jost text-lg">Bussiness Website</h3>
                     <p className="dark:text-white text-black text-[12px] font-Jost uppercase mt-1">
@@ -552,11 +580,11 @@ const Home = () => {
             </div>
 
             {/* Card 4 */}
-            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 p-5 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
+            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 sm:p-5 p-4 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
               <div className="card-shine"></div>
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <HtmlIcon className="w-10 h-10" />
+                  <WordpressIcon className="w-10 h-10" />
                   <div className="col-span-2 text-left">
                     <h3 className="dark:text-white text-black font-Jost text-lg">Bussiness Website</h3>
                     <p className="dark:text-white text-black text-[12px] font-Jost uppercase mt-1">
@@ -576,29 +604,7 @@ const Home = () => {
               <img src={GrayEagle} alt="Bussiness website" className="w-full mt-6 h-auto object-cover project-image" />
             </div>
 
-            {/* Card 1 */}
-            <div className="project-box cursor-pointer bg-black bg-opacity-70 lg:p-5 p-5 project-boxy border border-opacity-25 border-secondary rounded-[24px] text-center relative">
-              <div className="card-shine"></div>
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <HtmlIcon className="w-10 h-10" />
-                  <div className="col-span-2 text-left">
-                    <h3 className="dark:text-white text-black font-Jost text-lg">Portfolio</h3>
-                    <p className="dark:text-white text-black text-[12px] font-Jost uppercase mt-1">
-                      React | Tailwind | GSAP
-                    </p>
-                  </div>
-                </div>
-                <Link
-                  to="#"
-                  className="bg-secondary dark:text-black text-white font-Jost text-base group px-4 py-2 transition-all duration-300 ease-in-out rounded-lg flex items-center gap-2 hover:bg-primary"
-                >
-                  Visit{" "}
-                  <Readmore className="dark:fill-black fill-white w-[16px] h-auto group-hover:fill-white transition-all duration-300 ease-in-out" />
-                </Link>
-              </div>
-              <img src={Aurapro} alt="Portfolio project" className="w-full mt-6 h-auto object-cover project-image" />
-            </div>
+
           </div>
         </div>
       </section>

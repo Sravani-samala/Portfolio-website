@@ -975,7 +975,18 @@ path.codeline {
 }
 
 /* â”€â”€â”€ Custom Magnetic Cursor â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-*, *::before, *::after { cursor: none !important; }
+/* Hide native cursor everywhere EXCEPT form controls */
+*:not(input):not(textarea):not(select):not(.cf-dropdown-trigger):not(.cf-dropdown-option) { cursor: none !important; }
+
+/* Restore text cursor for text inputs */
+input, textarea, select { cursor: text !important; }
+
+/* Restore pointer for clickable form elements */
+.cf-dropdown-trigger,
+.cf-dropdown-option,
+button[type="submit"],
+.thankyou-close,
+label { cursor: pointer !important; }
 
 .custom-cursor {
   width: 40px;
@@ -1196,3 +1207,304 @@ p > .line-mask > .line-inner { display: inline-block; }
   background: linear-gradient(to left, var(--bg-dark), transparent);
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTACT FORM — FIELDS, VALIDATION, CUSTOM DROPDOWN, THANK-YOU
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Field wrapper — gives space for the error message ───────── */
+.cf-field-wrap {
+  margin-bottom: 16px;
+}
+
+/* ── Base field style — shared by input, textarea, dropdown ───── */
+.cf-field {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  outline: none;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+
+  /* Dark theme default */
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.cf-field::placeholder { color: rgba(255, 255, 255, 0.45); }
+
+/* Light theme */
+[data-theme="light"] .cf-field {
+  background: rgba(0, 0, 0, 0.06);
+  color: #111111;
+}
+[data-theme="light"] .cf-field::placeholder { color: rgba(0, 0, 0, 0.4); }
+
+/* Focus */
+.cf-field:focus {
+  border-color: rgba(78, 205, 196, 0.6);
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+/* Error state */
+.cf-field--error {
+  border-color: rgba(239, 68, 68, 0.7) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+/* Valid state */
+.cf-field--valid {
+  border-color: rgba(78, 205, 196, 0.45);
+}
+
+/* ── Inline error message ─────────────────────────────────────── */
+.cf-error-msg {
+  margin-top: 5px;
+  font-family: "Jost", sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #f87171;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.cf-error-msg::before {
+  content: "⚠";
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* ── Custom Dropdown — identical look to .cf-field ────────────── */
+
+/* Trigger button */
+.cf-dropdown-trigger {
+  /* Inherits all base field styles */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  outline: none;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+[data-theme="light"] .cf-dropdown-trigger {
+  background: rgba(0, 0, 0, 0.06);
+  color: #111111;
+}
+
+.cf-dropdown-trigger.cf-field--focus,
+.cf-dropdown-trigger:focus {
+  border-color: rgba(78, 205, 196, 0.6);
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+.cf-dropdown-trigger.cf-field--error {
+  border-color: rgba(239, 68, 68, 0.7) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+}
+
+.cf-dropdown-placeholder { color: rgba(255, 255, 255, 0.45); }
+[data-theme="light"] .cf-dropdown-placeholder { color: rgba(0, 0, 0, 0.4); }
+
+.cf-dropdown-value { color: inherit; }
+
+/* Chevron icon — rotates when open */
+.cf-chevron {
+  flex-shrink: 0;
+  color: #4ecdc4;
+  transition: transform 0.25s ease;
+}
+.cf-chevron--open { transform: rotate(180deg); }
+
+/* Options list */
+.cf-dropdown-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: #141f1e;
+  border: 1.5px solid rgba(78, 205, 196, 0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  list-style: none;
+  padding: 6px;
+  animation: dropdown-in 0.18s ease forwards;
+}
+
+[data-theme="light"] .cf-dropdown-list {
+  background: #ffffff;
+  border-color: rgba(3, 121, 113, 0.25);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes dropdown-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Individual option */
+.cf-dropdown-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 7px;
+  font-family: "Jost", sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  transition: background 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+
+.cf-dropdown-option:hover,
+.cf-dropdown-option:focus {
+  background: rgba(78, 205, 196, 0.12);
+  color: #ffffff;
+  outline: none;
+}
+
+.cf-dropdown-option--active {
+  background: rgba(78, 205, 196, 0.15);
+  color: #4ecdc4;
+}
+
+[data-theme="light"] .cf-dropdown-option        { color: rgba(0, 0, 0, 0.78); }
+[data-theme="light"] .cf-dropdown-option:hover  { background: rgba(3, 121, 113, 0.08); color: #037971; }
+[data-theme="light"] .cf-dropdown-option--active { background: rgba(3, 121, 113, 0.12); color: #037971; }
+
+.cf-tick { flex-shrink: 0; color: #4ecdc4; }
+
+/* Make the wrapper relative so the list positions correctly */
+.cf-field-wrap { position: relative; }
+
+/* ── Submit spinner ───────────────────────────────────────────── */
+.form-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: cf-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes cf-spin { to { transform: rotate(360deg); } }
+
+/* ── Thank-you overlay ────────────────────────────────────────── */
+.thankyou-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  animation: overlay-in 0.35s ease forwards;
+}
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Thank-you card ──────────────────────────────────────────── */
+.thankyou-card {
+  background: linear-gradient(135deg, #0f1a19 0%, #0d1f1e 100%);
+  border: 1px solid rgba(78, 205, 196, 0.25);
+  border-radius: 28px;
+  padding: 48px 40px 40px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(78, 205, 196, 0.08);
+  animation: card-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes card-pop {
+  from { opacity: 0; transform: scale(0.82) translateY(24px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+.thankyou-icon { width: 72px; height: 72px; margin: 0 auto 24px; }
+.thankyou-icon svg { width: 100%; height: 100%; overflow: visible; }
+
+.thankyou-circle {
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+  animation: draw-circle 0.6s ease forwards 0.1s;
+}
+@keyframes draw-circle { to { stroke-dashoffset: 0; } }
+
+.thankyou-check {
+  stroke-dasharray: 36;
+  stroke-dashoffset: 36;
+  animation: draw-check 0.4s ease forwards 0.6s;
+}
+@keyframes draw-check { to { stroke-dashoffset: 0; } }
+
+.thankyou-heading {
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.thankyou-body {
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+.thankyou-body strong { color: #4ecdc4; }
+
+.thankyou-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #037971, #4ecdc4);
+  color: #000;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 36px;
+  border-radius: 50px;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 28px rgba(78, 205, 196, 0.3);
+}
+.thankyou-close:hover  { transform: translateY(-2px) scale(1.03); box-shadow: 0 14px 36px rgba(78, 205, 196, 0.45); }
+.thankyou-close:active { transform: scale(0.97); }
+
+/* ═══════════════════════════════════════════════════════════════ */
+
+
+
+
+@media (max-width: 576px) {
+  .custom-cursor {
+    display: none !important;
+  }
+
+*:not(input):not(textarea):not(select):not(.cf-dropdown-trigger):not(.cf-dropdown-option) { cursor: auto !important; }
+
+}

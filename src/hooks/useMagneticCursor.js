@@ -13,6 +13,7 @@ import gsap from "gsap";
  */
 const useMagneticCursor = () => {
   useEffect(() => {
+    
     const cursor = document.querySelector(".custom-cursor");
     if (!cursor) return;
 
@@ -67,8 +68,9 @@ const useMagneticCursor = () => {
     gsap.ticker.add(tick);
 
     // ── Interactive elements: buttons, links, .magnetic ───────────
+    // Explicitly exclude form controls and anything marked .no-magnetic
     const MAGNETIC_SELECTOR =
-      'a, button, .magnetic, .rotating-btn, [role="button"]';
+      'a:not(.no-magnetic), button:not(.no-magnetic):not(input):not([type="submit"]):not(.cf-dropdown-trigger), .magnetic, .rotating-btn, [role="button"]:not(.no-magnetic):not(.cf-dropdown-trigger)';
 
     // Keep a map of active element → its cleanup functions
     // so we can always restore the element even if the user moves

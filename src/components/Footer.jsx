@@ -5,10 +5,10 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-[#111] py-4 ">
-        <p className="text-center text-white mb-0">
+      <footer className="bg-[#111] py-4 px-3">
+        <p className="text-center text-white mb-0 text-md-base text-sm font-Jost">
           &copy; {currentYear} All rights reserved | Design & Developed by
-          Sravani.
+          Sravani. ❤️
         </p>
       </footer>
     </>

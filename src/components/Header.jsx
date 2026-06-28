@@ -7,7 +7,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", path: "/" },
+    { name: "Home", path: "#hero" },
     { name: "About me", path: "#about" },
     { name: "Services", path: "#services" },
     { name: "Projects", path: "#projects" },
@@ -93,20 +93,19 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         <nav
-          className={`lg:hidden fixed top-0 right-0 h-full w-[40%] bg-[#1a1a1a] transform ${isOpen ? "translate-x-0" : "translate-x-full"
+          className={`lg:hidden fixed top-0 right-0 h-full w-[60vw] bg-[#1a1a1a] transform ${isOpen ? "translate-x-0" : "translate-x-full"
             } transition-transform duration-300 ease-in-out z-10`}
         >
           <ul className="flex flex-col items-center gap-6 pt-24">
             {navItems.map((item) => (
-              <li key={item.name} className="text-center">
-                <Link
-                  to={item.path}
-                  className="text-black dark:text-white text-sm uppercase font-normal font-Unbounded tracking-wide transition-all duration-300 ease-in-out hover:text-secondary"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              </li>
+               <li key={item.name} className="text-center">
+                  <a
+                    href={item.path}
+                    className="text-black dark:text-white text-sm uppercase font-normal font-Jost tracking-wider transition-all duration-300 ease-in-out hover:text-secondary menu-link relative"
+                  >
+                    {item.name}
+                  </a>
+                </li>
             ))}
           </ul>
         </nav>
